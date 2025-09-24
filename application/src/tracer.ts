@@ -1,12 +1,12 @@
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   BatchSpanProcessor,
-  ConsoleSpanExporter,
+  ConsoleSpanExporter
 } from '@opentelemetry/sdk-trace-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
-import {
+import { 
   PeriodicExportingMetricReader,
-  ConsoleMetricExporter,
+  ConsoleMetricExporter
 } from '@opentelemetry/sdk-metrics';
 import { resourceFromAttributes } from '@opentelemetry/resources';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
@@ -16,17 +16,17 @@ import {
 } from '@opentelemetry/semantic-conventions';
 import { SimpleLogRecordProcessor } from '@opentelemetry/sdk-logs';
 import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-proto';
-// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+//import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 const traceExporter = new OTLPTraceExporter();
 
 const resource = resourceFromAttributes({
-  [ATTR_SERVICE_NAME]: 'app-rocketseat',
+  [ATTR_SERVICE_NAME]: 'application-01',
   [ATTR_SERVICE_VERSION]: '1.0.0',
 });
 
 const mergedResource = resource;
-// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+//diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 const sdk = new NodeSDK({
   spanProcessor: new BatchSpanProcessor(traceExporter),
@@ -34,9 +34,9 @@ const sdk = new NodeSDK({
   metricReader: new PeriodicExportingMetricReader({
     exporter: new ConsoleMetricExporter(),
   }),
-  logRecordProcessor: new SimpleLogRecordProcessor(new OTLPLogExporter()),
+  logRecordProcessor: new SimpleLogRecordProcessor (new OTLPLogExporter()),
   instrumentations: [getNodeAutoInstrumentations()],
   resource: mergedResource,
-});
+})
 
 export default sdk;
