@@ -13,12 +13,11 @@ receivers:
             - targets: ['localhost:8888']
 
 processors:
-  batch:
   resource:
     attributes:
       - action: insert
-        key: loki.resource, labels
-        value: service.name, service.environment, service.version
+        key: loki.resource.labels
+        value: service.name,service.environment,service.version
 
 exporters:
   otlphttp/loki:
