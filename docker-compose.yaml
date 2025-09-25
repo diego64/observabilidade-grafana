@@ -52,9 +52,9 @@ services:
     container_name: otel
     restart: always
     ports:
-      - "4317:4317"
-      - "4318:4318"
-      - "8888:8888"
+      - 4317:4317
+      - 4318:4318
+      - 8888:8888
     command: ["--config=/etc/otelcol/config.yaml"]
     volumes:
       - ./config/otel/otel.yaml:/etc/otelcol/config.yaml
