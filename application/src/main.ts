@@ -12,7 +12,7 @@ async function bootstrap() {
       log.info('Aplicação 01 iniciada com sucesso!');
     })
     .catch(() => {
-      log.error('Não foi possível inicializar a Aplicação 01!');
+      log.error('Não foi possivél iniciar a Aplicação 01!');
     });
 }
 bootstrap();
