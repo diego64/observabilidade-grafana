@@ -7,7 +7,7 @@ function getRandomInt(min, max) {
 const URL = "http://localhost:3001/health";
 
 async function callHealth() {
-  // gera quantas requisições enviar: entre 1 e 100
+  // quantidade de requisições a serem enviadas (entre 1 e 100)
   const requestsCount = getRandomInt(1, 100);
   console.log(`[${new Date().toISOString()}] Enviando ${requestsCount} requisições...`);
 

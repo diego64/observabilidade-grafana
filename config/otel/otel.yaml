@@ -20,15 +20,15 @@ processors:
     timeout: 10s
   resource:
     attributes:
-      - key: service.name
-        action: upsert
-        value: application-01
+      #- key: service.name
+      #  action: upsert
+      #  value: application-01
       - key: service.environment
         action: upsert
         value: production
-      - key: service.version
-        action: upsert
-        value: "1.0.0"
+      #- key: service.version
+      #  action: upsert
+      #  value: "1.0.0"
 
 exporters:
   otlphttp:
