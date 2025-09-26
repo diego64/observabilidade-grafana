@@ -23,15 +23,12 @@ processors:
       - key: service.name
         action: upsert
         value: application-01
+      - key: service.environment
+        action: upsert
+        value: production
       - key: service.version
         action: upsert
         value: "1.0.0"
-      - key: job
-        action: upsert
-        value: backend-api
-      - key: filename
-        action: upsert
-        value: main.js
 
 exporters:
   otlphttp:
