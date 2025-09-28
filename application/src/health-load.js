@@ -27,8 +27,8 @@ async function callHealth() {
     }
   }
 
-  // espera aleatória de 0 a 10s antes da próxima execução
-  const delay = getRandomInt(0, 10_000);
+  // espera aleatória de 1 a 3 minutos antes da próxima execução
+  const delay = getRandomInt(60_000, 90_000); // entre 1min e 2min
   console.log(`Próxima execução em ${(delay / 1000).toFixed(0)}s...\n`);
 
   setTimeout(callHealth, delay);

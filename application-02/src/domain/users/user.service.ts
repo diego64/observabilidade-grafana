@@ -4,7 +4,7 @@ import { log } from '../../infra/logger'
 @Injectable()
 export class UserService {
   list(): Array<{ name: string, email: string }> {
-      log.info ('Buscando usuários...');
+      log.info ('INFO [SUCCESS]: Buscando usuários...');
       return [
         {
           name: "User 1", 
