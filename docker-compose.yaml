@@ -28,7 +28,8 @@ services:
     environment:
       - MINIO_ROOT_USER=loki
       - MINIO_ROOT_PASSWORD=++loki++
-    #command: server ~ --address ':9000' --console-address ':9001'
+      - MINIO_PROMETHEUS_AUTH_TYPE=public
+    # command: server ~ --address ':9000' --console-address ':9001'
     ports:
       - 9000:9000
       - 9001:9001
@@ -87,6 +88,8 @@ services:
     command: ['--web.enable-remote-write-receiver', '--config.file=/etc/prometheus/prometheus.yaml']
     volumes:
       - ./config/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+    depends_on:
+    - minio
   
   grafana:
     image: grafana/grafana:latest
@@ -97,9 +100,9 @@ services:
     volumes:
       - ./config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-      - GF_AUTH_DISABLE_FORM_LOGIN=true
+      - GF_AUTH_DISABLE_FORM_LOGIN=false
       - GF_SECURITY_ALLOW_EMBEDDING=true
     depends_on:
       - loki
